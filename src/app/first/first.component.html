@@ -1,0 +1,60 @@
+<h2>{{text}}</h2>
+
+<section>
+    <div class="example-label">Hey there!</div>
+    <div class="example-button-row">
+      <button mat-button (click)="changeText()">Click here</button>
+      <button mat-button (click)="showMoreButtons()" color="primary">Show more</button>
+      <button mat-button (click)="showLessButtons()" color="accent">Show less</button>
+      <a mat-button href="https://en.wikipedia.org/wiki/Coffee" target="_blank">Link</a>
+    </div>
+  </section>
+  <mat-divider></mat-divider>
+  <section *ngIf="showSecondRow===true">
+    <div class="example-label">Toppings</div>
+    <div class="example-button-row">
+      <button mat-raised-button>Sugar</button>
+      <button mat-raised-button color="primary">Nutella</button>
+      <button mat-raised-button color="accent">Cinammon</button>
+    </div>
+  </section>
+  <section>
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let item of my_list">{{item}}</mat-list-item>
+    </mat-list>
+  </section>
+  <section>
+    <mat-form-field class="example-form-field">
+      <mat-label>Enter favorite coffee</mat-label>
+      <input matInput type="text" [(ngModel)]="inputValue">
+      <button *ngIf="inputValue" matSuffix mat-icon-button aria-label="Clear" (click)="inputValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <h2>Your favorite coffee is {{inputValue}}</h2>
+  </section>
+  <section>
+    <button (click)="getCoffees()" mat-raised-button>Get special coffees</button>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let coffee of coffeesFromDB">
+        {{coffee.Name}}
+      </mat-list-item>
+    </mat-list>
+  </section>
+  <section>
+    <mat-form-field class="example-form-field">
+      <mat-label>Enter coffee name</mat-label>
+      <input matInput type="text" [(ngModel)]="newCoffeeName">
+      <button *ngIf="inputValue" matSuffix mat-icon-button aria-label="Clear" (click)="inputValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="example-form-field">
+      <mat-label>Enter coffee price</mat-label>
+      <input matInput type="text" [(ngModel)]="newCoffeePrice">
+      <button *ngIf="inputValue" matSuffix mat-icon-button aria-label="Clear" (click)="inputValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button (click)="addCoffee()" mat-raised-button>Add coffee</button>
+  </section>
